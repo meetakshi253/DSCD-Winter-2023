@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "quorum-protocol";
+option java_outer_classname = "Quorum";
+option objc_class_prefix = "DSC";
+
+package quorum;
+
+service Registry {
+    rpc Register(ServerAddress) returns (ServerAddress) {} //return information about primary replica
+    rpc GetServerList(EnquireServers) returns (stream ServerAddress) {} 
+}
+
+message ServerAddress {
+    string ip = 1;
+    string port = 2;
+}
+
+message EnquireServers {
+    string operation = 3;
+}

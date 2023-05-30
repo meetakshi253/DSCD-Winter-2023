@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "primary-blocking-protocol";
+option java_outer_classname = "Quorum";
+option objc_class_prefix = "DSC";
+
+package primary_blocking;
+
+service Server {
+    rpc Read(ReadRequest) returns (ReadResponse) {}
+    rpc Write(WriteRequest) returns (WriteResponse) {}
+    rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+
+    rpc PrimaryWrite(WriteRequest) returns (WriteResponse) {}
+    rpc PrimaryDelete(DeleteRequest) returns (DeleteResponse) {}
+
+    //only for the primary replica
+    rpc NewJoinee(ReplicaAddress) returns (JoinResponse) {}
+}
+
+message ReplicaAddress {
+    string ip = 1;
+    string port = 2;
+}
+
+message JoinResponse {
+    string status = 2;
+}
+
+message ReadRequest {
+    string uuid = 1;
+}
+
+message ReadResponse {
+    string status = 2;
+    string name = 3;
+    string content = 4;
+    string version = 5;
+}
+
+message WriteRequest {
+    string uuid = 1;
+    string name = 3;
+    string content = 4;
+}
+
+message PrimaryWriteRequest {
+    string uuid = 1;
+    string name = 3;
+    string content = 4;
+    string version = 5;
+}
+
+
+message WriteResponse {
+    string status = 2;
+    string uuid = 1;
+    string version = 5;
+}
+
+message DeleteRequest {
+    string uuid = 1;
+}
+
+message DeleteResponse {
+    string status = 2;
+}
