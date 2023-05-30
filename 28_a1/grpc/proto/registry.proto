@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "discord";
+option java_outer_classname = "DiscordProto";
+option objc_class_prefix = "DSC";
+
+package discord;
+
+service Registry {
+    rpc Register (ServerAddress) returns (RegistryResponseStatus) {}
+    rpc GetServerList (EnquireServers) returns (stream LiveServer) {}
+}
+
+message ServerAddress {
+    string ServerName = 1;
+    string IP = 2;
+    int32 Port = 3;
+}
+
+message EnquireServers {}
+
+message LiveServer {
+    string Server = 4;
+}
+
+message RegistryResponseStatus {
+    string status = 5;
+}

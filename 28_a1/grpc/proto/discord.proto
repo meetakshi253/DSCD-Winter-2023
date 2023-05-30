@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "discord";
+option java_outer_classname = "DiscordProto";
+option objc_class_prefix = "DSC";
+
+package discord;
+
+service Discord {
+    rpc JoinServer (ClientIdentifier) returns (ResponseStatus) {}
+    rpc LeaveServer (ClientIdentifier) returns (ResponseStatus) {}
+    rpc PublishArticles (ArticleFormat) returns (ResponseStatus) {}
+    rpc GetArticles (ArticleTag) returns (stream ArticleFormat) {}
+    rpc PingPong (HealthCheckRequest) returns (HealthCheckResponse) {}
+}
+
+message ArticleFormat {
+    oneof Type {
+        bool SPORTS = 1;
+        bool FASHION = 2;
+        bool POLITICS = 3;
+    }
+    string Author = 4;
+    string Content = 5;    /*only the first 200 characters will be read*/
+    optional string Timestamp = 6;
+    optional ClientIdentifier PublisherId = 8;
+    string status = 10;
+}
+
+message ArticleTag {
+    oneof Type {
+        bool SPORTS = 1;
+        bool FASHION = 2;
+        bool POLITICS = 3;
+    }
+    optional string Author = 4;
+    optional string Content = 5;    /*only the first 200 characters will be read*/
+    optional string Timestamp = 6;
+    ClientIdentifier PublisherId = 8;
+}
+
+message ResponseStatus {
+    string status = 7;
+}
+
+message ClientIdentifier {
+    string id = 8;
+}
+
+message HealthCheckResponse {
+    bool servingstatus = 9;
+}
+
+message HealthCheckRequest {}
