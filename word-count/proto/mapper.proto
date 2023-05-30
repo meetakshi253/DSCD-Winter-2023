@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "map-reduce";
+option java_outer_classname = "MapReduce";
+option objc_class_prefix = "DSC";
+
+package mapReduce;
+
+service Mapper {
+    rpc map(MapRequest) returns (MapResponse) {}
+}
+
+message MapRequest {
+    int32 reducers = 6;
+}
+
+message MapResponse {
+    string status = 2;
+}

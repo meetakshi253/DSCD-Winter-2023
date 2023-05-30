@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "map-reduce";
+option java_outer_classname = "MapReduce";
+option objc_class_prefix = "DSCD";
+
+package mapReduce;
+
+service Main {
+    rpc register(RegisterRequest) returns (RegisterResponse) {}
+    rpc submitResult(SubmissionRequest) returns (SubmissionResponse) {}
+    rpc workerReady(WorkerReadyRequest) returns (WorkerReadyResponse) {}
+}
+
+message WorkerReadyRequest {}
+message WorkerReadyResponse {}
+
+message RegisterRequest {
+    string ip = 1;
+    string port = 2;
+    string type = 3;
+}
+
+message RegisterResponse {
+    string status = 4;
+    string id = 5;
+}
+
+message SubmissionRequest {
+    string type = 3;
+    string status = 4;
+    string id = 5;
+    string outputPath = 7;
+    map <string, string> reducerPaths = 6;
+}
+
+message SubmissionResponse {
+}
+
+

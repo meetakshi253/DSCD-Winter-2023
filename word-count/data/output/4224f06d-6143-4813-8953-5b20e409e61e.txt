@@ -1,0 +1,12 @@
+this, 1
+is, 6
+apple, 2
+greatness, 3
+some, 2
+are, 1
+have, 1
+thrust, 1
+upon, 1
+them, 1
+worship, 2
+faith, 4
