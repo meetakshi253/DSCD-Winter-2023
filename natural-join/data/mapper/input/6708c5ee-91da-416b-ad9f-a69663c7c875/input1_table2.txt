@@ -1,0 +1,5 @@
+Name, Role
+John, CEO
+Tom, Manager
+Kevin, Intern
+Kevin, GM

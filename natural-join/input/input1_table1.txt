@@ -1,0 +1,5 @@
+Name, Age, Location
+John, 21, Delhi
+Tom, 17, Cali
+Smith, 23, NYC
+Kevin, 100, Delhi
