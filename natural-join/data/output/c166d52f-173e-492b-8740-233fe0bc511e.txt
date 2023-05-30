@@ -1,8 +1,0 @@
-Name,Age,Location,Role
-John,21,Delhi,CEO
-Kevin,100,Delhi,Chairman
-Kevin,100,Delhi,Intern
-Kevin,100,Delhi,GM
-Kevin,200,Delhi,Chairman
-Kevin,200,Delhi,Intern
-Kevin,200,Delhi,GM

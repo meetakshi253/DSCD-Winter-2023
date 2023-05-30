@@ -1,4 +1,0 @@
-Name, Age, Location
-Kevin, 200, Delhi
-Elon, 1, NYC
-Tom, 34, Hawaii
